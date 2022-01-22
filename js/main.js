@@ -15,11 +15,17 @@ function conteoCubiertos() {
 
     //Bucle para repetir el prompt hasta que el usuario quiera salir
 
-    while (cubierto != "ESC") {
+    while (cubierto == " ") {
 
-        cubierto = prompt('Ingrese cantidad de personas en la mesa o ESC para salir');
-        alert('Usted ha reservado una mesa para ' + cubierto);
-        console.log(cubierto);
+        if (cubierto != "ESC") {
+            cubierto = prompt('Ingrese cantidad de personas en la mesa o ESC para salir');
+            alert('Usted ha reservado una mesa para ' + cubierto);
+            console.log(cubierto);
+        } else {
+            alert('Gracias por utilizar nuestro servicio!');
+            break
+        }
+
     }
 }
 
