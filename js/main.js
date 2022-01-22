@@ -1,32 +1,29 @@
 //Reserva de mesas
 
-//Variable global para guardar lista de mesas
-
-let mesas = '';
+// *** QUIERO QUE EL USUARIO INGRESE CUÁNTAS PERSONAS COMEN POR MESA ***
 
 //Función
-function cubiertos() {
+
+function conteoCubiertos() {
 
     //Ingresa personas que van a comer
-    let personas = parseInt(prompt('Ingrese cantidad de personas en la mesa'));
-
-    //Suma lo ingresado a lo existente
-    mesas = mesas + ' ' + personas;
+    let cubierto = prompt('Ingrese cantidad de personas en la mesa o ESC para salir');
 
     //Muestra cada mesa ingresada
-    alert(personas);
+    alert('Usted ha reservado una mesa para ' + cubierto);
+    console.log(cubierto);
 
     //Bucle para repetir el prompt hasta que el usuario quiera salir
-    while (mesas >= 0) {
-        cubiertos();
-        if (mesas == 'ESC');
-        break;
+
+    while (cubierto != "ESC") {
+
+        cubierto = prompt('Ingrese cantidad de personas en la mesa o ESC para salir');
+        alert('Usted ha reservado una mesa para ' + cubierto);
+        console.log(cubierto);
     }
 }
 
-//Mostrar lista de mesas
-
-alert(mesas);
+conteoCubiertos();
 
 
 
