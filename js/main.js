@@ -9,7 +9,7 @@ let cubierto;
 function conteoCubiertos() {
 
     //Ingresa personas que van a comer
-    let cubierto = prompt('Ingrese cantidad de personas en la mesa o ESC para salir');
+    let cubierto = prompt('Ingrese cantidad de personas en la mesa o ESC para salir').toUpperCase();
 
     //Bucle para repetir el prompt hasta que el usuario quiera salir
 
@@ -17,7 +17,7 @@ function conteoCubiertos() {
         //Muestra cada mesa ingresada
         alert('Usted ha reservado una mesa para ' + cubierto);
         console.log(cubierto);
-        cubierto = prompt('Ingrese cantidad de personas en la mesa o ESC para salir')
+        cubierto = prompt('Ingrese cantidad de personas en la mesa o ESC para salir').toUpperCase();
     }
     alert('Gracias por utilizar nuestro servicio!');
 }
