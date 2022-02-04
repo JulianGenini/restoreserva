@@ -6,26 +6,28 @@ let cubierto;
 
 //Función
 function conteoCubiertos() {
-
     //Ingresa personas que van a comer
-    let cubierto = prompt('Ingrese cantidad de personas en la mesa o ESC para salir').toUpperCase();
 
-    //Bucle para repetir el prompt hasta que el usuario quiera salir
-
-    while (cubierto != 'ESC') {
-        //Muestra cada mesa ingresada
+    //****IMPORTANTE***  || Al declarar la variable sin la palabra reservada, la transforma en una variable GLOBAL
+    cubierto = parseInt(prompt('Ingrese cantidad de personas en la mesa'));
+    if (!isNaN(cubierto)) {
         alert('Usted ha reservado una mesa para ' + cubierto);
-        console.log(cubierto);
-        cubierto = prompt('Ingrese cantidad de personas en la mesa o ESC para salir').toUpperCase();
+
+    } else {
+        alert('Por favor ingrese la información correcta')
+        cubierto = parseInt(prompt('Ingrese cantidad de personas en la mesa'));
     }
-    alert('Gracias por utilizar nuestro servicio!');
 }
 
 conteoCubiertos();
+console.log(cubierto);
+
+if (isNaN(cubierto)) {
+    conteoCubiertos();
+}
+
 
 ////////////////////////////////////////////////////////////
-
-// DESAFIO COMPLEMENTARIO //
 
 // *** ARRAYS ***
 
@@ -59,7 +61,45 @@ productos.push(new Producto(8, 'HELADO', 500, categorias[3]));
 //Mostrar array en consola
 console.log(productos);
 
-// Método para buscar la posición 
+//*********** Selección de platos ***********
 
-let obtenerIndice = categorias.indexOf('BEBIDAS');
-console.log(obtenerIndice);
+//Búsqueda
+
+let buscar = prompt('Ya sabe lo que va a pedir? Escriba SI o ingrese cualquier caracter para ver todas las opciones').toUpperCase();
+
+if (buscar == 'SI') {
+
+    entradaBusqueda = prompt('Ingrese lo que desea pedir').toUpperCase();
+    encontrado = productos.find(productos => productos.nombre == entradaBusqueda);
+    console.log(encontrado);
+
+    if (encontrado) {
+        alert('Se agregará ' + encontrado + 'a su orden y será ubicado en una mesa para ' + cubierto + ' personas');
+
+    } else {
+        alert('El producto no fue encontrado, a continuación verá las opciones disponibles');
+    }
+
+} else {
+
+    //Variable que sirve de acumulador
+    let opcionesDisponibles = ""
+
+    //forEach que recorre el array
+    productos.forEach((producto) => {
+        opcionesDisponibles = opcionesDisponibles + "\n" + producto.nombre
+    });
+
+    let platoSeleccion = prompt('Por favor ingrese lo que desea pedir \nLas opciones actualmente disponibles son:\n' + opcionesDisponibles + '\nSi no desea pedir nada, escriba ESC').toUpperCase();
+
+    if (platoSeleccion != 'ESC') {
+
+        alert('Usted ha reservado ' + platoSeleccion + '. En el próximo paso podrá ver el resumen de su pedido.');
+        //Mensaje final
+        alert('Usted ha solicitado ser atendido en una mesa para ' + cubierto + ' personas ' + 'y su menú elegido es ' + platoSeleccion + '\nGracias por utilizar nuestro servicio!');
+
+    } else {
+
+        alert('Usted no ha reservado ningún menú')
+    }
+}
