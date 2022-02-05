@@ -10,7 +10,7 @@ function conteoCubiertos() {
 
     //****IMPORTANTE***  || Al declarar la variable sin la palabra reservada, la transforma en una variable GLOBAL
     cubierto = parseInt(prompt('Ingrese cantidad de personas en la mesa'));
-    if (!isNaN(cubierto)) {
+    if (!isNaN(cubierto) && cubierto != " " && cubierto != null) {
         alert('Usted ha reservado una mesa para ' + cubierto);
 
     } else {
@@ -21,10 +21,6 @@ function conteoCubiertos() {
 
 conteoCubiertos();
 console.log(cubierto);
-
-if (isNaN(cubierto)) {
-    conteoCubiertos();
-}
 
 ////////////////////////////////////////////////////////////
 
