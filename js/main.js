@@ -62,24 +62,7 @@ console.log(productos);
 
 //*********** Selección de platos ***********
 
-//Búsqueda
-
-let buscar = prompt('Ya sabe lo que va a pedir? Escriba SI o ingrese cualquier caracter para ver todas las opciones').toUpperCase();
-
-if (buscar == 'SI') {
-
-    entradaBusqueda = prompt('Ingrese lo que desea pedir').toUpperCase();
-    encontrado = productos.find(productos => productos.nombre == entradaBusqueda);
-    console.log(encontrado);
-
-    if (encontrado) {
-        alert('Se agregará ' + encontrado + 'a su orden y será ubicado en una mesa para ' + cubierto + ' personas');
-
-    } else {
-        alert('El producto no fue encontrado, a continuación verá las opciones disponibles');
-    }
-
-} else {
+function opcionesDisponibles() {
 
     //Variable que sirve de acumulador
     let opcionesDisponibles = ""
@@ -102,3 +85,28 @@ if (buscar == 'SI') {
         alert('Usted no ha reservado ningún menú')
     }
 }
+
+//Búsqueda
+
+let buscar = prompt('Ya sabe lo que va a pedir? Escriba SI o ingrese cualquier caracter para ver todas las opciones').toUpperCase();
+
+if (buscar == 'SI') {
+
+    entradaBusqueda = prompt('Ingrese lo que desea pedir').toUpperCase();
+    encontrado = productos.find(productos => productos.nombre == entradaBusqueda);
+    encontrado = JSON.stringify(encontrado);
+    console.log(encontrado);
+
+    if (encontrado) {
+        alert('Se agregará ' + encontrado + 'a su orden y será ubicado en una mesa para ' + cubierto + ' personas');
+
+    } else {
+        alert('El producto no fue encontrado, a continuación verá las opciones disponibles');
+
+        opcionesDisponibles();
+    }
+
+} else {
+    opcionesDisponibles();
+}
+
