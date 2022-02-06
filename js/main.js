@@ -11,16 +11,19 @@ function conteoCubiertos() {
     //****IMPORTANTE***  || Al declarar la variable sin la palabra reservada, la transforma en una variable GLOBAL
     cubierto = parseInt(prompt('Ingrese cantidad de personas en la mesa'));
     if (!isNaN(cubierto) && cubierto != " " && cubierto != null) {
-        alert('Usted ha reservado una mesa para ' + cubierto);
+        document.getElementById('cubiertos__seleccion').innerHTML = cubierto;
 
     } else {
         alert('Por favor ingrese la información correcta')
         cubierto = parseInt(prompt('Ingrese cantidad de personas en la mesa'));
+        document.getElementById('cubiertos__seleccion').innerHTML = cubierto;
+
     }
 }
 
 conteoCubiertos();
 console.log(cubierto);
+
 
 ////////////////////////////////////////////////////////////
 
@@ -57,52 +60,36 @@ productos.push(new Producto(8, 'HELADO', 500, categorias[3]));
 console.log(productos);
 
 //*********** Selección de platos ***********
+let divSeleccion = document.getElementById("seleccion__disponibles");
 
-function opcionesDisponibles() {
+//Variable que sirve de acumulador
+let opcionesDisponibles = ""
 
-    //Variable que sirve de acumulador
-    let opcionesDisponibles = ""
+//forEach que recorre el array
+productos.forEach((producto) => {
+    opcionesDisponibles = opcionesDisponibles + "\n" + producto.nombre
+});
 
-    //forEach que recorre el array
-    productos.forEach((producto) => {
-        opcionesDisponibles = opcionesDisponibles + "\n" + producto.nombre
-    });
+let platoSeleccion = prompt('Por favor ingrese lo que desea pedir \nLas opciones actualmente disponibles son:\n' + opcionesDisponibles + '\nSi no desea pedir nada, escriba ESC').toUpperCase();
 
-    let platoSeleccion = prompt('Por favor ingrese lo que desea pedir \nLas opciones actualmente disponibles son:\n' + opcionesDisponibles + '\nSi no desea pedir nada, escriba ESC').toUpperCase();
+console.log(platoSeleccion);
 
-    if (platoSeleccion != 'ESC') {
+if (platoSeleccion != 'ESC') {
 
-        alert('Usted ha reservado ' + platoSeleccion + '. En el próximo paso podrá ver el resumen de su pedido.');
-        //Mensaje final
-        alert('Usted ha solicitado ser atendido en una mesa para ' + cubierto + ' personas ' + 'y su menú elegido es ' + platoSeleccion + '\nGracias por utilizar nuestro servicio!');
-
-    } else {
-
-        alert('Usted no ha reservado ningún menú')
-    }
-}
-
-//Búsqueda
-
-let buscar = prompt('Ya sabe lo que va a pedir? Escriba SI o ingrese cualquier caracter para ver todas las opciones').toUpperCase();
-
-if (buscar == 'SI') {
-
-    entradaBusqueda = prompt('Ingrese lo que desea pedir').toUpperCase();
-    encontrado = productos.find(productos => productos.nombre == entradaBusqueda);
-    encontrado = JSON.stringify(encontrado);
+    encontrado = productos.find(productos => productos.nombre == platoSeleccion);
     console.log(encontrado);
 
-    if (encontrado) {
-        alert('Se agregará ' + encontrado + 'a su orden y será ubicado en una mesa para ' + cubierto + ' personas');
-
-    } else {
-        alert('El producto no fue encontrado, a continuación verá las opciones disponibles');
-
-        opcionesDisponibles();
+    for (const nombre of encontrado) {
+        let divSeleccion = document.createElement("div");
+        divSeleccion.innerHTML = `<h3>Producto: ${productos.nombre}</h3><h3>Precio: $ ${productos.precio}</h3>`;
+        seleccion__disponibles.append(divSeleccion);
     }
 
+
 } else {
-    opcionesDisponibles();
+    let divSeleccion = document.createElement("div");
+    divSeleccion.innerHTML = `<p>Usted no ha reservado ningún menú</p>`;
+    seleccion__disponibles.append(divSeleccion);
 }
 
+document.querySelector("#agradecimiento").innerHTML="Muchas gracias por utilizar nuestro servicio!";
