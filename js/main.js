@@ -72,18 +72,14 @@ productos.forEach((producto) => {
 
 let platoSeleccion = prompt('Por favor ingrese lo que desea pedir \nLas opciones actualmente disponibles son:\n' + opcionesDisponibles + '\nSi no desea pedir nada, escriba ESC').toUpperCase();
 
-console.log(platoSeleccion);
 
 if (platoSeleccion != 'ESC') {
 
-    encontrado = productos.find(productos => productos.nombre == platoSeleccion);
+    let encontrado = productos.find(productos => productos.nombre == platoSeleccion);
     console.log(encontrado);
-
-    for (const nombre of encontrado) {
-        let divSeleccion = document.createElement("div");
-        divSeleccion.innerHTML = `<h3>Producto: ${productos.nombre}</h3><h3>Precio: $ ${productos.precio}</h3>`;
-        seleccion__disponibles.append(divSeleccion);
-    }
+    divSeleccion = document.createElement("div");
+    divSeleccion.innerHTML = `<h3>Producto: ${encontrado.nombre}</h3><h3>Precio: $ ${encontrado.precio}</h3>`;
+    seleccion__disponibles.append(divSeleccion);
 
 
 } else {
@@ -92,4 +88,4 @@ if (platoSeleccion != 'ESC') {
     seleccion__disponibles.append(divSeleccion);
 }
 
-document.querySelector("#agradecimiento").innerHTML="Muchas gracias por utilizar nuestro servicio!";
+document.querySelector("#agradecimiento").innerHTML = "Muchas gracias por utilizar nuestro servicio!";
