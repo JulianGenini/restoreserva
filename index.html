@@ -10,22 +10,37 @@
 </head>
 
 <body>
-    <h1>Resumen de su reserva</h1>
+    <h1>Haga su pedido aquí</h1>
 
-    <div id="cubiertos">
-        <h2>Personas que comerán</h2>
-        <p id="cubiertos__seleccion"></p>
-    </div>
+    <form id="formularioCliente">
+        <label for="ingresoCubiertos">Ingrese las personas que comerán</label>
+        <input type="number" id="ingresoCubiertos" name="ingresoCubiertos" min="0" max="10">
 
-    <div id="seleccion">
-        <h2>Menú solicitado</h2>
-        <div id="seleccion__disponibles"> </div>
-    </div>
 
-    <div>
-        <h3 id="agradecimiento"></h3>
-    </div>
+        <select name="entrada" id="entrada">
 
+        </select>
+
+        <select name="platoPrincipal" id="">
+
+        </select>
+
+        <select name="postre" id="">
+
+        </select>
+
+        <select name="bebida" id="">
+
+        </select>
+
+        <input type="submit">
+
+    </form>
+
+    <h2>Resumen de su reserva</h2>
+    <button>Generar el resumen de su pedido</button>
+    <!-- desde un boton (con evento) generar una plantilla html que muestre el resumen-->
+    
     <script src="js/main.js"></script>
 </body>
 
