@@ -47,12 +47,27 @@ if (productosEntrada.length > 0) {
 
     let select = document.getElementById('entrada');
 
-    for (const productos of productosEntrada) {
-        select.innerHTML = `<option> ${productosEntrada.nombre} </option>`;
-        
-    }
+    select.innerHTML = `<option> ${productosEntrada.nombre} </option>`;
 
-    // select.innerHTML="<option>"+productosEntrada+"</option>";
+}
+
+
+// SELECCION PLATO PRINCIPAL
+
+// Recorrer el array para que busque lo deseado
+
+const XXXXX = productos.filter(producto => producto.categoria == 'PLATOS');
+console.log(XXXXX);
+
+
+// SELECCION PLATO POSTRES
+
+// Recorrer el array para que busque lo deseado
+
+const XXXXX = productos.filter(producto => producto.categoria == 'POSTRES');
+console.log(XXXXX);
+
+   // select.innerHTML="<option>"+productosEntrada+"</option>";
 
     // //CARGANDO LA PRIMER OPCION DEL ARRAY EN EL SELECT
     // //miSelect.innerHTML="<option>"+categorias[0]+"</option>";
@@ -62,9 +77,7 @@ if (productosEntrada.length > 0) {
     //     select.innerHTML += "<option>" + categoria + "</option>";
     // }
 
-} else {
-    console.log('No se encontro');
-}
+
 
 //-----------EJEMPLO CON SELECT DINAMICO-----------
 
@@ -133,13 +146,6 @@ if (productosEntrada.length > 0) {
 // }
 
 // document.querySelector("#agradecimiento").innerHTML = "Muchas gracias por utilizar nuestro servicio!";
-
-
-
-
-
-
-
 
 
 
