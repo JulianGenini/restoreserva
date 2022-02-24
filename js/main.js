@@ -43,117 +43,47 @@ console.log(productosEntrada);
 
 //Generar opciones en HTML
 
-if (productosEntrada.length > 0) {
+for (let item of productosEntrada) {
 
-    let select = document.getElementById('entrada');
-
-    select.innerHTML = `<option> ${productosEntrada.nombre} </option>`;
-
+    let select = document.getElementById('entrada')
+    select.innerHTML += `<option>${item.nombre}</option>`
 }
-
 
 // SELECCION PLATO PRINCIPAL
 
-// Recorrer el array para que busque lo deseado
+const productosPrincipal = productos.filter(producto => producto.categoria == 'PLATOS');
 
-const XXXXX = productos.filter(producto => producto.categoria == 'PLATOS');
-console.log(XXXXX);
+for (let item of productosPrincipal) {
 
+    let select = document.getElementById('principal')
+    select.innerHTML += `<option>${item.nombre}</option>`
+}
 
-// SELECCION PLATO POSTRES
+// SELECCION POSTRES
 
-// Recorrer el array para que busque lo deseado
+const productosPostre = productos.filter(producto => producto.categoria == 'POSTRES');
 
-const XXXXX = productos.filter(producto => producto.categoria == 'POSTRES');
-console.log(XXXXX);
+for (let item of productosPostre) {
 
-   // select.innerHTML="<option>"+productosEntrada+"</option>";
+    let select = document.getElementById('postre')
+    select.innerHTML += `<option>${item.nombre}</option>`
+}
 
-    // //CARGANDO LA PRIMER OPCION DEL ARRAY EN EL SELECT
-    // //miSelect.innerHTML="<option>"+categorias[0]+"</option>";
+// SELECCION BEBIDAS
 
-    // //RECORRO EL ARRAY CATEGORIAS Y POR CADA POSICION AGREGO UNA OPCION
-    // for (const categoria of categorias) {
-    //     select.innerHTML += "<option>" + categoria + "</option>";
-    // }
+const productosBebida = productos.filter(producto => producto.categoria == 'BEBIDAS');
 
+for (let item of productosBebida) {
 
+    let select = document.getElementById('bebida')
+    select.innerHTML += `<option>${item.nombre}</option>`
+}
 
-//-----------EJEMPLO CON SELECT DINAMICO-----------
+//Evento 
 
-
-//CARGANDO LA PRIMER OPCION DEL ARRAY EN EL SELECT
-//miSelect.innerHTML="<option>"+categorias[0]+"</option>";
-
-// //RECORRO EL ARRAY CATEGORIAS Y POR CADA POSICION AGREGO UNA OPCION
-// for (const categoria of categorias) {
-//         miSelect.innerHTML +="<option>"+categoria+"</option>";        
-// }
-
-
-
-// let cubierto;
-
-// //Función
-// function conteoCubiertos() {
-//     //Ingresa personas que van a comer
-
-//     //****IMPORTANTE***  || Al declarar la variable sin la palabra reservada, la transforma en una variable GLOBAL
-//     cubierto = parseInt(prompt('Ingrese cantidad de personas en la mesa'));
-//     if (!isNaN(cubierto) && cubierto != " " && cubierto != null) {
-//         document.getElementById('cubiertos__seleccion').innerHTML = cubierto;
-
-//     } else {
-//         alert('Por favor ingrese la información correcta')
-//         cubierto = parseInt(prompt('Ingrese cantidad de personas en la mesa'));
-//         document.getElementById('cubiertos__seleccion').innerHTML = cubierto;
-//     }
-// }
-
-// conteoCubiertos();
-// console.log(cubierto);
-
-
-
-// //Mostrar array en consola
-// console.log(productos);
-
-// //*********** Selección de platos ***********
-// let divSeleccion = document.getElementById("seleccion__disponibles");
-
-// //Variable que sirve de acumulador
-// let opcionesDisponibles = ""
-
-// //forEach que recorre el array
-// productos.forEach((producto) => {
-//     opcionesDisponibles = opcionesDisponibles + "\n" + producto.nombre
-// });
-
-// let platoSeleccion = prompt('Por favor ingrese lo que desea pedir \nLas opciones actualmente disponibles son:\n' + opcionesDisponibles + '\nSi no desea pedir nada, escriba ESC').toUpperCase();
-
-// if (platoSeleccion != 'ESC') {
-
-//     let encontrado = productos.find(productos => productos.nombre == platoSeleccion);
-//     console.log(encontrado);
-//     divSeleccion = document.createElement("div");
-//     divSeleccion.innerHTML = `<h3>Producto: ${encontrado.nombre}</h3><h3>Precio: $ ${encontrado.precio}</h3>`;
-//     seleccion__disponibles.append(divSeleccion);
-
-// } else {
-//     let divSeleccion = document.createElement("div");
-//     divSeleccion.innerHTML = `<p>Usted no ha reservado ningún menú</p>`;
-//     seleccion__disponibles.append(divSeleccion);
-// }
-
-// document.querySelector("#agradecimiento").innerHTML = "Muchas gracias por utilizar nuestro servicio!";
-
-
-
-// /////////////////////////////////////////////////////
-
-// let boton = document.getElementById("botonId")
-// boton.addEventListener("click", respuestaClick)
-
-// function respuestaClick() {
-//      console.log("Respuesta evento");
-// }
+let evento = document.getElementById('evento');
+evento.onclick = () => {
+    let divReporte = document.getElementById('resumen')
+    divReporte.innerHTML = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fringilla nulla odio, id ullamcorper risus luctus vel. Etiam dapibus laoreet maximus. Sed imperdiet lacus sed turpis dignissim, quis pulvinar mi dapibus. Praesent dignissim, eros ut condimentum sodales, justo est ultrices velit, ut tempor est dolor quis ex. Sed semper lacus at euismod vehicula. Sed blandit sem sapien, et iaculis erat tempus eget. Duis vestibulum urna nisl, at posuere neque semper at.
+    </p>`
+}

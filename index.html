@@ -14,22 +14,22 @@
 
     <form id="formularioCliente">
         <label for="ingresoCubiertos">Ingrese las personas que comerán</label>
-        <input type="number" id="ingresoCubiertos" name="ingresoCubiertos" min="0" max="10">
+        <input type="number" id="ingresoCubiertos" name="ingresoCubiertos" min="1" max="10">
 
 
         <select name="entrada" id="entrada">
 
         </select>
 
-        <select name="platoPrincipal" id="">
+        <select name="platoPrincipal" id="principal">
 
         </select>
 
-        <select name="postre" id="">
+        <select name="postre" id="postre">
 
         </select>
 
-        <select name="bebida" id="">
+        <select name="bebida" id="bebida">
 
         </select>
 
@@ -38,9 +38,10 @@
     </form>
 
     <h2>Resumen de su reserva</h2>
-    <button>Generar el resumen de su pedido</button>
+    <button id="evento">Generar el resumen de su pedido</button>
     <!-- desde un boton (con evento) generar una plantilla html que muestre el resumen-->
-    
+    <div id="resumen"></div>
+
     <script src="js/main.js"></script>
 </body>
 
