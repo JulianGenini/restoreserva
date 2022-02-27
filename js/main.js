@@ -30,10 +30,28 @@ productos.push(new Producto(6, 'GASEOSA', 300, categorias[2]));
 productos.push(new Producto(7, 'FLAN', 500, categorias[3]));
 productos.push(new Producto(8, 'HELADO', 500, categorias[3]));
 
+
 // *** QUIERO QUE EL USUARIO INGRESE CUÁNTAS PERSONAS COMEN POR MESA ***
 
-let cubierto = document.getElementById("ingresoCubiertos").value;
+function recogerDatos() {
+    let cubiertosCantidad = document.getElementById('ingresoCubiertos').value; 
+    console.log(cubiertosCantidad);
+}
 
+let cubiertoForm = document.getElementById("cubiertos");
+
+cubiertoForm.onclick = () => {
+    recogerDatos()
+}
+
+cubiertoForm.onsubmit = (e) => {
+    e.preventDefault();
+}
+
+
+
+
+/*
 // SELECCION ENTRADA
 
 // Recorrer el array para que busque las entradas
@@ -87,3 +105,5 @@ evento.onclick = () => {
     divReporte.innerHTML = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fringilla nulla odio, id ullamcorper risus luctus vel. Etiam dapibus laoreet maximus. Sed imperdiet lacus sed turpis dignissim, quis pulvinar mi dapibus. Praesent dignissim, eros ut condimentum sodales, justo est ultrices velit, ut tempor est dolor quis ex. Sed semper lacus at euismod vehicula. Sed blandit sem sapien, et iaculis erat tempus eget. Duis vestibulum urna nisl, at posuere neque semper at.
     </p>`
 }
+
+*/
