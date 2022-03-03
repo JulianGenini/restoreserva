@@ -7,6 +7,17 @@ h1{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#formularioCliente {
-    text-align: center;
+
+form{
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+#carta{
+    align-items: center;
+}
+
+select{
+    margin-bottom: 2rem;
 }
