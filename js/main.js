@@ -35,17 +35,16 @@ productos.push(new Producto(8, 'HELADO', 500, categorias[3]));
 function recogerDatos() {
     let cubiertosCantidad = document.getElementById('ingresoCubiertos').value;
     console.log(cubiertosCantidad);
+    let reporteTitulo = document.getElementById('titulo')
+    reporteTitulo.innerHTML = `<h3>Usted ha reservado una mesa para ${cubiertosCantidad} persona/s</h3>`
 }
 
-let cubiertoForm = document.getElementById("cubiertos");
+let cubiertoForm = document.getElementById("submitCubiertos");
 
 cubiertoForm.onclick = () => {
     recogerDatos()
 }
 
-cubiertoForm.onsubmit = (e) => {
-    e.preventDefault();
-}
 
 // SELECCION ENTRADA
 
@@ -91,39 +90,29 @@ for (let item of productosBebida) {
     select.innerHTML += `<option>${item.nombre}</option>`
 }
 
-let comanda
 
 function recogerDatos2() {
-    let comanda = document.querySelectorAll('.seleccion').value
-    console.log(comanda);
+    let comanda = document.querySelectorAll('.seleccion');
     
+    for (item of comanda) {
+        console.log(item.value);
+        
+        let divReporte = document.getElementById('pedir')
+        divReporte.innerHTML += `<div>Usted ha ordenado ${item.value}</div>`
+    }
 }
 
-
-let pedidoForm = document.getElementById("carta");
+let pedidoForm = document.getElementById("pedirComanda");
 
 pedidoForm.onclick = () => {
     recogerDatos2()
 }
 
-pedidoForm.onsubmit = (e) => {
-    e.preventDefault();
-}
 
-
-
-
-
-
-
-
-/*
 //Evento 
 
-let evento = document.getElementById('evento');
-evento.onclick = () => {
-    let divReporte = document.getElementById('resumen')
-    divReporte.innerHTML = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fringilla nulla odio, id ullamcorper risus luctus vel. Etiam dapibus laoreet maximus. Sed imperdiet lacus sed turpis dignissim, quis pulvinar mi dapibus. Praesent dignissim, eros ut condimentum sodales, justo est ultrices velit, ut tempor est dolor quis ex. Sed semper lacus at euismod vehicula. Sed blandit sem sapien, et iaculis erat tempus eget. Duis vestibulum urna nisl, at posuere neque semper at.
-    </p>`
-}
-*/
+// let evento = document.getElementById('evento');
+// evento.onclick = () => {
+//     // let divReporte = document.getElementById('resumen')
+//     // divReporte.innerHTML = `<p>   </p>`
+// }

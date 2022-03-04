@@ -10,14 +10,10 @@ h1{
 
 form{
     margin-bottom: 3rem;
-    display: flex;
-    justify-content: center;
+    display:;
 }
 
-#carta{
-    align-items: center;
-}
-
-select{
+label, select{
+    display: block;
     margin-bottom: 2rem;
 }

@@ -13,10 +13,9 @@
     <h1>Haga su pedido aquí</h1>
 
     <form id="cubiertos">
-        <label for="ingresoCubiertos">Ingrese las personas que comerán</label>
-        <input type="number" id="ingresoCubiertos" name="ingresoCubiertos" min="1" max="10">
-        <input type="submit" value="Confirmar" id="submitCubiertos">
-
+        <label for="ingresoCubiertos">Ingrese la o las persona/s que comerán</label>
+        <input type="number" id="ingresoCubiertos" name="ingresoCubiertos" min="1" max="10" value="1">
+        <input type="button" value="Confirmar" id="submitCubiertos">
 
     </form>
 
@@ -26,7 +25,7 @@
 
         <label for="entrada">Seleccione una entrada</label>
         <select name="entrada" id="entrada" class="seleccion">
-
+            
         </select>
 
         <label for="principal">Seleccione el plato principal</label>
@@ -44,17 +43,19 @@
 
         </select>
 
-        <input type="submit" value="Pedir">
+        <input type="button" value="Pedir" id="pedirComanda">
 
     </form>
 
+    <div>
+        <h2>Resumen de su reserva</h2>
+        <button id="evento">Generar el resumen de su pedido</button>
+        desde un boton (con evento) generar una plantilla html que muestre el resumen
 
-    <!--
-    <h2>Resumen de su reserva</h2>
-    <button id="evento">Generar el resumen de su pedido</button>
-     desde un boton (con evento) generar una plantilla html que muestre el resumen
-    <div id="resumen"></div>
-    -->
+        <div id="titulo"></div>
+        <div id="pedir"></div>
+
+    </div>
 
     <script src="js/main.js"></script>
 </body>
