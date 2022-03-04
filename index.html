@@ -25,7 +25,7 @@
 
         <label for="entrada">Seleccione una entrada</label>
         <select name="entrada" id="entrada" class="seleccion">
-            
+
         </select>
 
         <label for="principal">Seleccione el plato principal</label>
@@ -49,12 +49,24 @@
 
     <div>
         <h2>Resumen de su reserva</h2>
-        <button id="evento">Generar el resumen de su pedido</button>
-        desde un boton (con evento) generar una plantilla html que muestre el resumen
+        <button id="evento">Mostrar el resumen de su pedido</button>
 
-        <div id="titulo"></div>
-        <div id="pedir"></div>
+        <div id="resumen">
 
+            <div id="titulo"></div>
+            <div id="pedir"></div>
+
+            <button id="evento" onclick="ocultar()">Ocultar resumen</button>
+
+        </div>
+
+    </div>
+
+    <div id="historial">
+        <h3>Historial de mesas</h3>
+        <ul id="conteoMesas"></ul>
+        <h3>Historial de órdenes</h3>
+        <div id="conteoPedidos"></div>
     </div>
 
     <script src="js/main.js"></script>

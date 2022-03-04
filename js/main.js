@@ -35,6 +35,10 @@ productos.push(new Producto(8, 'HELADO', 500, categorias[3]));
 function recogerDatos() {
     let cubiertosCantidad = document.getElementById('ingresoCubiertos').value;
     console.log(cubiertosCantidad);
+    
+    localStorage.setItem("personasMesa", cubiertosCantidad)
+
+    
     let reporteTitulo = document.getElementById('titulo')
     reporteTitulo.innerHTML = `<h3>Usted ha reservado una mesa para ${cubiertosCantidad} persona/s</h3>`
 }
@@ -43,6 +47,7 @@ let cubiertoForm = document.getElementById("submitCubiertos");
 
 cubiertoForm.onclick = () => {
     recogerDatos()
+
 }
 
 
@@ -94,11 +99,15 @@ for (let item of productosBebida) {
 function recogerDatos2() {
     let comanda = document.querySelectorAll('.seleccion');
     
+
+    localStorage.setItem("comandas", JSON.stringify(comanda));
+    
     for (item of comanda) {
         console.log(item.value);
         
         let divReporte = document.getElementById('pedir')
         divReporte.innerHTML += `<div>Usted ha ordenado ${item.value}</div>`
+        
     }
 }
 
@@ -109,10 +118,34 @@ pedidoForm.onclick = () => {
 }
 
 
-//Evento 
+// Evento 
 
-// let evento = document.getElementById('evento');
-// evento.onclick = () => {
-//     // let divReporte = document.getElementById('resumen')
-//     // divReporte.innerHTML = `<p>   </p>`
-// }
+// Funcion mostrar/ocultar reporte
+
+function mostrar() {
+    document.getElementById('resumen').style.display = 'block';
+}
+
+function ocultar() {
+    document.getElementById('resumen').style.display = 'none';
+}
+
+
+let evento = document.getElementById('evento');
+evento.onclick = () => {
+    mostrar()
+}
+
+//Historial
+
+let historialMesas = localStorage.getItem('personasMesa');
+console.log(historialMesas);
+
+let historial1 = document.getElementById('conteoMesas');
+historial1.innerHTML = `<li>${historialMesas}</li>`
+
+let historialPedidos = JSON.parse(localStorage.getItem('comandas'));
+console.log(historialPedidos);
+
+let historial2 = document.getElementById('conteoPedidos');
+historial2.innerHTML = `<p>${historialPedidos}</p>`
