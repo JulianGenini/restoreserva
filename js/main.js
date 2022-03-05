@@ -41,15 +41,9 @@ function recogerDatos() {
 
     let reporteTitulo = document.getElementById('titulo')
     reporteTitulo.innerHTML = `<h3>Usted ha reservado una mesa para ${cubiertosCantidad} persona/s</h3>`
-}
-
-let cubiertoForm = document.getElementById("submitCubiertos");
-
-cubiertoForm.onclick = () => {
-    recogerDatos()
 
     Toastify({
-        text: "Ingreso de personas CONFIRMADO!",
+        text: `Ingreso de ${cubiertosCantidad} persona/s CONFIRMADO!`,
         duration: 3000,
         gravity: 'top',
         position: 'right',
@@ -58,7 +52,12 @@ cubiertoForm.onclick = () => {
             background: "linear-gradient(to right, #9b8b3e, #088200)",
           },
     }).showToast();
+}
 
+let cubiertoForm = document.getElementById("submitCubiertos");
+
+cubiertoForm.onclick = () => {
+    recogerDatos()
 }
 
 
@@ -133,7 +132,6 @@ pedidoForm.onclick = () => {
         gravity: 'top',
         position: 'right',
         style: {
-            
             background: "linear-gradient(to right, #9b8b3e, #088200)",
           },
     }).showToast();
