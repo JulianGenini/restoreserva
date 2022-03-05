@@ -35,10 +35,10 @@ productos.push(new Producto(8, 'HELADO', 500, categorias[3]));
 function recogerDatos() {
     let cubiertosCantidad = document.getElementById('ingresoCubiertos').value;
     console.log(cubiertosCantidad);
-    
+
     localStorage.setItem("personasMesa", cubiertosCantidad)
 
-    
+
     let reporteTitulo = document.getElementById('titulo')
     reporteTitulo.innerHTML = `<h3>Usted ha reservado una mesa para ${cubiertosCantidad} persona/s</h3>`
 }
@@ -47,6 +47,17 @@ let cubiertoForm = document.getElementById("submitCubiertos");
 
 cubiertoForm.onclick = () => {
     recogerDatos()
+
+    Toastify({
+        text: "Ingreso de personas CONFIRMADO!",
+        duration: 3000,
+        gravity: 'top',
+        position: 'right',
+        style: {
+            
+            background: "linear-gradient(to right, #9b8b3e, #088200)",
+          },
+    }).showToast();
 
 }
 
@@ -98,16 +109,16 @@ for (let item of productosBebida) {
 
 function recogerDatos2() {
     let comanda = document.querySelectorAll('.seleccion');
-    
+
 
     localStorage.setItem("comandas", JSON.stringify(comanda));
-    
+
     for (item of comanda) {
         console.log(item.value);
-        
+
         let divReporte = document.getElementById('pedir')
         divReporte.innerHTML += `<div>Usted ha ordenado ${item.value}</div>`
-        
+
     }
 }
 
@@ -115,6 +126,17 @@ let pedidoForm = document.getElementById("pedirComanda");
 
 pedidoForm.onclick = () => {
     recogerDatos2()
+
+    Toastify({
+        text: "Pedido enviado a la cocina!",
+        duration: 3000,
+        gravity: 'top',
+        position: 'right',
+        style: {
+            
+            background: "linear-gradient(to right, #9b8b3e, #088200)",
+          },
+    }).showToast();
 }
 
 
