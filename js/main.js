@@ -5,6 +5,13 @@
 
 const categorias = ['ENTRADAS', 'PLATOS', 'BEBIDAS', 'POSTRES'];
 
+// Array vacio para usar con objetos
+const productos = [];
+
+//Array para usar con Pedido
+const pedidos = [];
+
+
 // Objetos
 
 class Producto {
@@ -16,8 +23,16 @@ class Producto {
     }
 }
 
-// Array vacio para usar con objetos
-const productos = [];
+class Pedido {
+    constructor(id, nombre, cubiertos, orden, total) {
+        this.id = parseInt(id);
+        this.nombre = nombre;
+        this.cubiertos = parseInt(cubiertos);
+        this.orden = orden; //array productos pedidos!
+        this.total = parseFloat(total); //suma total del pedido
+    }
+}
+
 
 // Método push para agregar objetos al array
 
@@ -29,6 +44,65 @@ productos.push(new Producto(5, 'AGUA', 200, categorias[2]));
 productos.push(new Producto(6, 'GASEOSA', 300, categorias[2]));
 productos.push(new Producto(7, 'FLAN', 500, categorias[3]));
 productos.push(new Producto(8, 'HELADO', 500, categorias[3]));
+
+
+pedidos.push(new Pedido(1, 'Juan', 2, 'tbc', 50));
+
+// Funciones para obtener datos del form
+
+function obtenerNombre() {
+    let obtenerN = document.getElementById('ingresoNombre').value;
+    return obtenerN;
+}
+
+function obtenerCubiertos() {
+    let obtenerC = document.getElementById('ingresoCubiertos').value;
+    return obtenerC;
+}
+
+function obtenerEntradas() {
+    let obtenerE = document.getElementById('entrada').value;
+    return obtenerE;
+}
+
+function obtenerPrincipal() {
+    let obtenerP = document.getElementById('principal').value;
+    return obtenerP;
+}
+
+function obtenerPostre() {
+    let obtenerPos = document.getElementById('postre').value;
+    return obtenerPos;
+}
+
+function obtenerBebida() {
+    let obtenerB = document.getElementById('bebida').value;
+    return obtenerB;
+}
+
+function obtenerPedido() {
+    
+    obtenerEntradas()
+    obtenerPrincipal()
+    obtenerPostre()
+    obtenerBebida()
+}
+
+function crearPedido() {
+    let pedido = new Pedido(pedidos.length + 1, obtenerNombre(), obtenerCubiertos(), obtenerPedido(), )
+    pedidos.push(pedido);
+}
+
+let pedidoForm = document.getElementById("pedirComanda");
+
+pedidoForm.onclick = () => {
+    crearPedido()
+}
+
+
+
+/*
+
 
 // *** QUIERO QUE EL USUARIO INGRESE CUÁNTAS PERSONAS COMEN POR MESA ***
 
@@ -51,49 +125,6 @@ cubiertoForm.onclick = () => {
 }
 
 
-// SELECCION ENTRADA
-
-// Recorrer el array para que busque las entradas
-
-const productosEntrada = productos.filter(producto => producto.categoria == 'ENTRADAS');
-
-//Generar opciones en HTML
-
-for (let item of productosEntrada) {
-
-    let select = document.getElementById('entrada')
-    select.innerHTML += `<option>${item.nombre}</option>`
-}
-
-// SELECCION PLATO PRINCIPAL
-
-const productosPrincipal = productos.filter(producto => producto.categoria == 'PLATOS');
-
-for (let item of productosPrincipal) {
-
-    let select = document.getElementById('principal')
-    select.innerHTML += `<option>${item.nombre}</option>`
-}
-
-// SELECCION POSTRES
-
-const productosPostre = productos.filter(producto => producto.categoria == 'POSTRES');
-
-for (let item of productosPostre) {
-
-    let select = document.getElementById('postre')
-    select.innerHTML += `<option>${item.nombre}</option>`
-}
-
-// SELECCION BEBIDAS
-
-const productosBebida = productos.filter(producto => producto.categoria == 'BEBIDAS');
-
-for (let item of productosBebida) {
-
-    let select = document.getElementById('bebida')
-    select.innerHTML += `<option>${item.nombre}</option>`
-}
 
 
 function recogerDatos2() {
@@ -139,13 +170,14 @@ evento.onclick = () => {
 //Historial
 
 let historialMesas = localStorage.getItem('personasMesa');
-console.log(historialMesas);
 
 let historial1 = document.getElementById('conteoMesas');
 historial1.innerHTML = `<li>${historialMesas}</li>`
 
 let historialPedidos = JSON.parse(localStorage.getItem('comandas'));
-console.log(historialPedidos);
 
 let historial2 = document.getElementById('conteoPedidos');
 historial2.innerHTML = `<p>${historialPedidos}</p>`
+
+
+*/
