@@ -11,7 +11,6 @@ const productos = [];
 //Array para usar con Pedido
 const pedidos = [];
 
-
 // Objetos
 
 class Producto {
@@ -46,8 +45,6 @@ productos.push(new Producto(7, 'FLAN', 500, categorias[3]));
 productos.push(new Producto(8, 'HELADO', 500, categorias[3]));
 
 
-pedidos.push(new Pedido(1, 'Juan', 2, 'tbc', 50));
-
 // Funciones para obtener datos del form
 
 function obtenerNombre() {
@@ -62,26 +59,30 @@ function obtenerCubiertos() {
 
 function obtenerEntradas() {
     let obtenerE = document.getElementById('entrada').value;
-    return obtenerE;
+    const entradasObtenidas = productos.find(item => item.entrada == obtenerE);
+    return entradasObtenidas;
 }
 
 function obtenerPrincipal() {
     let obtenerP = document.getElementById('principal').value;
-    return obtenerP;
+    const principalObtenido = productos.find(item => item.principal == obtenerP);
+    return principalObtenido;
 }
 
 function obtenerPostre() {
     let obtenerPos = document.getElementById('postre').value;
-    return obtenerPos;
+    const poslObtenido = productos.find(item => item.postre == obtenerPos);
+    return poslObtenido;
 }
 
 function obtenerBebida() {
     let obtenerB = document.getElementById('bebida').value;
-    return obtenerB;
+    const bebidaObtenida = productos.find(item => item.bebida == obtenerB);
+    return bebidaObtenida;
 }
 
 function obtenerPedido() {
-    
+
     obtenerEntradas()
     obtenerPrincipal()
     obtenerPostre()
@@ -89,9 +90,11 @@ function obtenerPedido() {
 }
 
 function crearPedido() {
-    let pedido = new Pedido(pedidos.length + 1, obtenerNombre(), obtenerCubiertos(), obtenerPedido(), )
+    let pedido = new Pedido(pedidos.length + 1, obtenerNombre(), obtenerCubiertos(), obtenerPedido())
     pedidos.push(pedido);
 }
+
+
 
 let pedidoForm = document.getElementById("pedirComanda");
 
@@ -99,7 +102,7 @@ pedidoForm.onclick = () => {
     crearPedido()
 }
 
-
+console.log(pedidos);
 
 /*
 
