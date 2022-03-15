@@ -59,42 +59,42 @@ function obtenerCubiertos() {
 
 function obtenerEntradas() {
     let obtenerE = document.getElementById('entrada').value;
-    const entradasObtenidas = productos.find(item => item.entrada == obtenerE);
+    const entradasObtenidas = productos.find(item => item.nombre == obtenerE);
     return entradasObtenidas;
 }
 
 function obtenerPrincipal() {
     let obtenerP = document.getElementById('principal').value;
-    const principalObtenido = productos.find(item => item.principal == obtenerP);
+    const principalObtenido = productos.find(item => item.nombre == obtenerP);
     return principalObtenido;
 }
 
 function obtenerPostre() {
     let obtenerPos = document.getElementById('postre').value;
-    const poslObtenido = productos.find(item => item.postre == obtenerPos);
+    const poslObtenido = productos.find(item => item.nombre == obtenerPos);
     return poslObtenido;
 }
 
 function obtenerBebida() {
     let obtenerB = document.getElementById('bebida').value;
-    const bebidaObtenida = productos.find(item => item.bebida == obtenerB);
+    const bebidaObtenida = productos.find(item => item.nombre == obtenerB);
     return bebidaObtenida;
 }
 
 function obtenerPedido() {
-
-    obtenerEntradas()
-    obtenerPrincipal()
-    obtenerPostre()
-    obtenerBebida()
+    let pedido = [obtenerEntradas(),
+    obtenerPrincipal(),
+    obtenerPostre(),
+    obtenerBebida()];
+    return pedido;
 }
+
+let pedido = [];
 
 function crearPedido() {
     let pedido = new Pedido(pedidos.length + 1, obtenerNombre(), obtenerCubiertos(), obtenerPedido())
     pedidos.push(pedido);
 }
-
-
 
 let pedidoForm = document.getElementById("pedirComanda");
 
