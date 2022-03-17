@@ -28,10 +28,9 @@ class Pedido {
         this.nombre = nombre;
         this.cubiertos = parseInt(cubiertos);
         this.orden = orden; //array productos pedidos!
-        this.total = parseFloat(total); //suma total del pedido
+        this.total = this.orden.reduce((sum, item) => sum + item.precio, 0);
     }
 }
-
 
 // Método push para agregar objetos al array
 
@@ -43,7 +42,6 @@ productos.push(new Producto(5, 'AGUA', 200, categorias[2]));
 productos.push(new Producto(6, 'GASEOSA', 300, categorias[2]));
 productos.push(new Producto(7, 'FLAN', 500, categorias[3]));
 productos.push(new Producto(8, 'HELADO', 500, categorias[3]));
-
 
 // Funciones para obtener datos del form
 
@@ -57,104 +55,77 @@ function obtenerCubiertos() {
     return obtenerC;
 }
 
-function obtenerEntradas() {
-    let obtenerE = document.getElementById('entrada').value;
-    const entradasObtenidas = productos.find(item => item.nombre == obtenerE);
-    return entradasObtenidas;
-}
+// Funcion con método
 
-function obtenerPrincipal() {
-    let obtenerP = document.getElementById('principal').value;
-    const principalObtenido = productos.find(item => item.nombre == obtenerP);
-    return principalObtenido;
-}
-
-function obtenerPostre() {
-    let obtenerPos = document.getElementById('postre').value;
-    const poslObtenido = productos.find(item => item.nombre == obtenerPos);
-    return poslObtenido;
-}
-
-function obtenerBebida() {
-    let obtenerB = document.getElementById('bebida').value;
-    const bebidaObtenida = productos.find(item => item.nombre == obtenerB);
-    return bebidaObtenida;
+function obtenerDato(id) {
+    let dato = document.getElementById(id).value;
+    return productos.find(item => item.nombre == dato);
 }
 
 function obtenerPedido() {
-    let pedido = [obtenerEntradas(),
-    obtenerPrincipal(),
-    obtenerPostre(),
-    obtenerBebida()];
+    const pedido = [obtenerDato('entrada'),
+    obtenerDato('principal'),
+    obtenerDato('postre'),
+    obtenerDato('bebida')];
     return pedido;
 }
-
-let pedido = [];
 
 function crearPedido() {
     let pedido = new Pedido(pedidos.length + 1, obtenerNombre(), obtenerCubiertos(), obtenerPedido())
     pedidos.push(pedido);
+
+    localStorage.setItem("comandas", JSON.stringify(pedido));
+
+    let divReporte = document.getElementById('pedir')
+    divReporte.innerHTML = `<div>Usted ha ordenado ${pedido}</div>`
+
+    console.log("pedido: ", pedido);
+    console.log("pedidos: ", pedidos);
 }
 
 let pedidoForm = document.getElementById("pedirComanda");
 
 pedidoForm.onclick = () => {
-    crearPedido()
+    crearPedido();
+    // recogerDatos2()
 }
 
-console.log(pedidos);
+/* 
 
-/*
+            **** HASTA ACA OK ****
+
+*/
+
+//     ****** Resumen del pedido ******
 
 
-// *** QUIERO QUE EL USUARIO INGRESE CUÁNTAS PERSONAS COMEN POR MESA ***
+//            CUBIERTOS
+
+/*              Función para:
+ - Mostrar cubiertos ingresados dinámicamente en HTML
+ - Guardar la misma información en localStorage
+*/
 
 function recogerDatos() {
     let cubiertosCantidad = document.getElementById('ingresoCubiertos').value;
     console.log(cubiertosCantidad);
-    
+
     localStorage.setItem("personasMesa", cubiertosCantidad)
 
-    
+
     let reporteTitulo = document.getElementById('titulo')
     reporteTitulo.innerHTML = `<h3>Usted ha reservado una mesa para ${cubiertosCantidad} persona/s</h3>`
 }
+
+// Botón que llama la función anterior
 
 let cubiertoForm = document.getElementById("submitCubiertos");
 
 cubiertoForm.onclick = () => {
     recogerDatos()
-
 }
 
-
-
-
-function recogerDatos2() {
-    let comanda = document.querySelectorAll('.seleccion');
-    
-
-    localStorage.setItem("comandas", JSON.stringify(comanda));
-    
-    for (item of comanda) {
-        console.log(item.value);
-        
-        let divReporte = document.getElementById('pedir')
-        divReporte.innerHTML += `<div>Usted ha ordenado ${item.value}</div>`
-        
-    }
-}
-
-let pedidoForm = document.getElementById("pedirComanda");
-
-pedidoForm.onclick = () => {
-    recogerDatos2()
-}
-
-
-// Evento 
-
-// Funcion mostrar/ocultar reporte
+// Mostrar/ocultar reporte
 
 function mostrar() {
     document.getElementById('resumen').style.display = 'block';
@@ -163,7 +134,6 @@ function mostrar() {
 function ocultar() {
     document.getElementById('resumen').style.display = 'none';
 }
-
 
 let evento = document.getElementById('evento');
 evento.onclick = () => {
@@ -178,9 +148,12 @@ let historial1 = document.getElementById('conteoMesas');
 historial1.innerHTML = `<li>${historialMesas}</li>`
 
 let historialPedidos = JSON.parse(localStorage.getItem('comandas'));
+historialPedidos = JSON.stringify(historialPedidos)
+console.log(historialPedidos);
 
 let historial2 = document.getElementById('conteoPedidos');
-historial2.innerHTML = `<p>${historialPedidos}</p>`
-
-
-*/
+historial2.innerHTML = `<h3>Numero de pedido: ${historialPedidos.id}</h3>
+                        <h3>A nombre de: ${historialPedidos.nombre}</h3>
+                        <h4>Personas en la mesa: ${historialPedidos.cubiertos}</h4>
+                        <h4>Su orden es la siguiente:</h4>
+                        <p>${historialPedidos.orden}</p>`
