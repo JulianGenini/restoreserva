@@ -50,6 +50,7 @@ function obtenerNombre() {
     return obtenerN;
 }
 
+
 function obtenerCubiertos() {
     let obtenerC = document.getElementById('ingresoCubiertos').value;
     return obtenerC;
@@ -140,25 +141,6 @@ evento.onclick = () => {
     mostrar()
 }
 
-//Historial
-
-let historialMesas = localStorage.getItem('personasMesa');
-
-let historial1 = document.getElementById('conteoMesas');
-historial1.innerHTML = `<li>${historialMesas}</li>`
-
-let historialPedidos = JSON.parse(localStorage.getItem('comandas'));
-historialPedidos = JSON.stringify(historialPedidos)
-console.log(historialPedidos);
-
-let historial2 = document.getElementById('conteoPedidos');
-historial2.innerHTML = `<h3>Numero de pedido: ${historialPedidos.id}</h3>
-                        <h3>A nombre de: ${historialPedidos.nombre}</h3>
-                        <h4>Personas en la mesa: ${historialPedidos.cubiertos}</h4>
-                        <h4>Su orden es la siguiente:</h4>
-                        <p>${historialPedidos.orden}</p>`
-
-
 // Fetch
 
 let url = 'http://api.weatherapi.com/v1/current.json?key=23fc3ba8bf934f2d8f8195549221103&q=Ushuaia&aqi=no';
@@ -169,7 +151,6 @@ fetch(url)
 
 const mostrarData = (data) => {
     console.log(data)
-
     document.getElementById('wx').innerHTML = `<p>Actualmente la temperatura en la ciudad de Ushuaia es de ${data.current.temp_c}º</p><p>La velocidad del viento es de ${data.current.wind_kph}km/h y proviene de los ${data.current.wind_degree}º</p><img src=${data.current.condition.icon}>`;
 
 }
