@@ -45,6 +45,12 @@ form{
     flex-direction: column;
 }
 
+
+.total {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 .divWx{
     display: flex;
     flex-direction: column;

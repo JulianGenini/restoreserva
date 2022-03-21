@@ -56,6 +56,32 @@ function obtenerCubiertos() {
     return obtenerC;
 }
 
+// Toastify nombre
+
+function toastiNombre() {
+
+    let nombreToasti = document.getElementById('ingresoNombre').value;
+
+    Toastify({
+        text: `Bienvenidx ${nombreToasti}!`,
+        duration: 3000,
+        gravity: 'top',
+        position: 'right',
+        style: {
+
+            background: "linear-gradient(to right, #9b8b3e, #088200)",
+        },
+    }).showToast();
+
+}
+
+
+let nombreForm = document.getElementById('submitNombre');
+
+nombreForm.onclick = () => {
+    toastiNombre();
+}
+
 // Funcion con método
 
 function obtenerDato(id) {
@@ -75,10 +101,27 @@ function crearPedido() {
     let pedido = new Pedido(pedidos.length + 1, obtenerNombre(), obtenerCubiertos(), obtenerPedido())
     pedidos.push(pedido);
 
-    localStorage.setItem("comandas", JSON.stringify(pedido));
+    // let pedidoStorage = JSON.parse(localStorage.getItem('comandas')) || [];
+
+    // pedidoStorage.push(pedido);
+
+    // let pedidoStorageJSON = JSON.stringify(pedidoStorage);
+
+    // localStorage.setItem('comandas', pedidoStorageJSON)
+
+
+
+
+    let listaOrden = "";
+    pedido.orden.forEach(item => {
+        listaOrden += `<li>${item.nombre}</li>`;
+    });
+
 
     let divReporte = document.getElementById('pedir')
-    divReporte.innerHTML = `<div>Usted ha ordenado ${pedido}</div>`
+    divReporte.innerHTML = `<div>Usted ha ordenado: <ul>${listaOrden}</ul>
+                            <span class="total">El total a pagar es: $${pedido.total}</span>
+                            </div>`
 
     console.log("pedido: ", pedido);
     console.log("pedidos: ", pedidos);
@@ -88,14 +131,18 @@ let pedidoForm = document.getElementById("pedirComanda");
 
 pedidoForm.onclick = () => {
     crearPedido();
-    // recogerDatos2()
+    Toastify({
+        text: `Pedido creado!`,
+        duration: 3000,
+        gravity: 'top',
+        position: 'right',
+        style: {
+
+            background: "linear-gradient(to right, #9b8b3e, #088200)",
+        },
+    }).showToast();
+  
 }
-
-/* 
-
-            **** HASTA ACA OK ****
-
-*/
 
 //     ****** Resumen del pedido ******
 
@@ -111,8 +158,22 @@ function recogerDatos() {
     let cubiertosCantidad = document.getElementById('ingresoCubiertos').value;
     console.log(cubiertosCantidad);
 
-    localStorage.setItem("personasMesa", cubiertosCantidad)
+    let cubArray = JSON.parse(localStorage.getItem("personasMesa")) || [];
+    cubArray.push(cubiertosCantidad);
+    let cubArrayJSON = JSON.stringify(cubArray);
 
+    localStorage.setItem("personasMesa", cubArrayJSON)
+
+    Toastify({
+        text: `Ingreso de ${cubiertosCantidad} persona/s CONFIRMADO!`,
+        duration: 3000,
+        gravity: 'top',
+        position: 'right',
+        style: {
+
+            background: "linear-gradient(to right, #9b8b3e, #088200)",
+        },
+    }).showToast();
 
     let reporteTitulo = document.getElementById('titulo')
     reporteTitulo.innerHTML = `<h3>Usted ha reservado una mesa para ${cubiertosCantidad} persona/s</h3>`
