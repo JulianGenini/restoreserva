@@ -141,7 +141,7 @@ pedidoForm.onclick = () => {
             background: "linear-gradient(to right, #9b8b3e, #088200)",
         },
     }).showToast();
-  
+
 }
 
 //     ****** Resumen del pedido ******
@@ -187,7 +187,7 @@ let cubiertoForm = document.getElementById("submitCubiertos");
 
 cubiertoForm.onclick = () => {
     recogerDatos(),
-    mostarHistorialCubiertos()
+        mostarHistorialCubiertos()
 }
 
 // Mostrar/ocultar reporte
@@ -223,19 +223,20 @@ const mostrarData = (data) => {
 
 function mostarHistorialCubiertos() {
 
-    let personasMesaArray = JSON.parse(localStorage.getItem("personasMesa")) 
+    let personasMesaArray = JSON.parse(localStorage.getItem("personasMesa"))
 
     let conteoMesas = document.getElementById('conteoMesas')
 
     conteoMesas.innerHTML = `El historial de personas por mesas del día de hoy es el siguiente: ${personasMesaArray}`;
-    
+
 }
 
+mostarHistorialCubiertos()
 
-// Botón que llama la función anterior
+// Borrar todo
 
-let cubiertoHistorial = document.getElementById("actualizarHistorialMesas");
+let borrarHistorial = document.getElementById("borrar");
 
 cubiertoHistorial.onclick = () => {
-    mostarHistorialCubiertos()
+    localStorage.clear()
 }
