@@ -233,10 +233,11 @@ function mostarHistorialCubiertos() {
 
 mostarHistorialCubiertos()
 
+
 // Borrar todo
 
 let borrarHistorial = document.getElementById("borrar");
 
-cubiertoHistorial.onclick = () => {
+borrarHistorial.onclick = () => {
     localStorage.clear()
 }
