@@ -105,9 +105,9 @@ function crearPedido() {
 
     pedidoStorage.push(pedido);
 
-    // let pedidoStorageJSON = JSON.stringify(pedidoStorage);
+    let pedidoStorageJSON = JSON.stringify(pedidoStorage);
 
-    // localStorage.setItem('comandas', pedidoStorageJSON)
+    localStorage.setItem('comandas', pedidoStorageJSON)
 
 
 
@@ -227,7 +227,7 @@ function mostarHistorialCubiertos() {
 
     let conteoMesas = document.getElementById('conteoMesas')
 
-    conteoMesas.innerHTML = `El historial de personas por mesas del día de hoy es el siguiente: ${personasMesaArray}`;
+    conteoMesas.innerHTML = `El historial de cubiertos por mesas del día de hoy es el siguiente: ${personasMesaArray}`;
 
 }
 
