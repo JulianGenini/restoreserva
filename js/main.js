@@ -181,20 +181,6 @@ function recogerDatos() {
 }
 
 
-//Función para mostrar historial de cubiertos
-
-function mostarHistorialCubiertos() {
-
-    let personasMesaArray = JSON.parse(localStorage.getItem("personasMesa")) 
-
-    let conteoMesas = document.getElementById('conteoMesas')
-
-
-    for (var i = 0; i < personasMesaArray.length; i++) {
-        conteoMesas.innerHTML += `<tr><td>${personasMesaArray}</td></tr>"`;
-    }
-}
-
 // Botón que llama la función anterior
 
 let cubiertoForm = document.getElementById("submitCubiertos");
@@ -231,4 +217,27 @@ const mostrarData = (data) => {
     console.log(data)
     document.getElementById('wx').innerHTML = `<p>Actualmente la temperatura en la ciudad de Ushuaia es de ${data.current.temp_c}º</p><p>La velocidad del viento es de ${data.current.wind_kph}km/h y proviene de los ${data.current.wind_degree}º</p><img src=${data.current.condition.icon}>`;
 
+}
+
+//Función para mostrar historial de cubiertos
+
+function mostarHistorialCubiertos() {
+
+    let personasMesaArray = JSON.parse(localStorage.getItem("personasMesa")) 
+
+    console.log(personasMesaArray);
+
+    let conteoMesas = document.getElementById('conteoMesas')
+
+    conteoMesas.innerHTML = `El historial de personas por mesas del día de hoy es el siguiente: ${personasMesaArray}`;
+    
+}
+
+
+// Botón que llama la función anterior
+
+let cubiertoHistorial = document.getElementById("actualizarHistorialMesas");
+
+cubiertoHistorial.onclick = () => {
+    mostarHistorialCubiertos()
 }
