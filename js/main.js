@@ -101,9 +101,9 @@ function crearPedido() {
     let pedido = new Pedido(pedidos.length + 1, obtenerNombre(), obtenerCubiertos(), obtenerPedido())
     pedidos.push(pedido);
 
-    // let pedidoStorage = JSON.parse(localStorage.getItem('comandas')) || [];
+    let pedidoStorage = JSON.parse(localStorage.getItem('comandas')) || [];
 
-    // pedidoStorage.push(pedido);
+    pedidoStorage.push(pedido);
 
     // let pedidoStorageJSON = JSON.stringify(pedidoStorage);
 
@@ -164,6 +164,7 @@ function recogerDatos() {
 
     localStorage.setItem("personasMesa", cubArrayJSON)
 
+
     Toastify({
         text: `Ingreso de ${cubiertosCantidad} persona/s CONFIRMADO!`,
         duration: 3000,
@@ -179,12 +180,28 @@ function recogerDatos() {
     reporteTitulo.innerHTML = `<h3>Usted ha reservado una mesa para ${cubiertosCantidad} persona/s</h3>`
 }
 
+
+//Función para mostrar historial de cubiertos
+
+function mostarHistorialCubiertos() {
+
+    let personasMesaArray = JSON.parse(localStorage.getItem("personasMesa")) 
+
+    let conteoMesas = document.getElementById('conteoMesas')
+
+
+    for (var i = 0; i < personasMesaArray.length; i++) {
+        conteoMesas.innerHTML += `<tr><td>${personasMesaArray}</td></tr>"`;
+    }
+}
+
 // Botón que llama la función anterior
 
 let cubiertoForm = document.getElementById("submitCubiertos");
 
 cubiertoForm.onclick = () => {
-    recogerDatos()
+    recogerDatos(),
+    mostarHistorialCubiertos()
 }
 
 // Mostrar/ocultar reporte
