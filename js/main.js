@@ -225,8 +225,6 @@ function mostarHistorialCubiertos() {
 
     let personasMesaArray = JSON.parse(localStorage.getItem("personasMesa")) 
 
-    console.log(personasMesaArray);
-
     let conteoMesas = document.getElementById('conteoMesas')
 
     conteoMesas.innerHTML = `El historial de personas por mesas del día de hoy es el siguiente: ${personasMesaArray}`;
