@@ -233,7 +233,7 @@ function mostarHistorialCubiertos() {
 
 mostarHistorialCubiertos()
 
-
+// Historial comandas
 
 let pedidosStorageArray = JSON.parse(localStorage.getItem("comandas"))
 
@@ -253,4 +253,5 @@ let borrarHistorial = document.getElementById("borrar");
 
 borrarHistorial.onclick = () => {
     localStorage.clear()
+    location.reload()
 }
