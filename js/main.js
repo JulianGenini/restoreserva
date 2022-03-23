@@ -234,6 +234,19 @@ function mostarHistorialCubiertos() {
 mostarHistorialCubiertos()
 
 
+
+let pedidosStorageArray = JSON.parse(localStorage.getItem("comandas"))
+
+let conteoPedidosDiv = document.getElementById('conteoPedidos')
+
+console.log(pedidosStorageArray);
+
+conteoPedidosDiv.innerHTML += `${pedidosStorageArray}` 
+
+
+
+
+
 // Borrar todo
 
 let borrarHistorial = document.getElementById("borrar");
