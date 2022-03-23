@@ -142,6 +142,7 @@ pedidoForm.onclick = () => {
         },
     }).showToast();
 
+    location.reload()
 }
 
 //     ****** Resumen del pedido ******
@@ -178,6 +179,7 @@ function recogerDatos() {
 
     let reporteTitulo = document.getElementById('titulo')
     reporteTitulo.innerHTML = `<h3>Usted ha reservado una mesa para ${cubiertosCantidad} persona/s</h3>`
+
 }
 
 
@@ -187,7 +189,7 @@ let cubiertoForm = document.getElementById("submitCubiertos");
 
 cubiertoForm.onclick = () => {
     recogerDatos(),
-        mostarHistorialCubiertos()
+    mostarHistorialCubiertos()
 }
 
 // Mostrar/ocultar reporte
@@ -241,7 +243,18 @@ let conteoPedidosDiv = document.getElementById('conteoPedidos')
 
 console.log(pedidosStorageArray);
 
-conteoPedidosDiv.innerHTML += `${pedidosStorageArray}` 
+if (pedidosStorageArray.length != null) {
+    for (let i = 0; i < pedidosStorageArray.length; i++) {
+
+        // Acceder al objeto del arreglo en la posicion "i"
+        conteoPedidosDiv.innerHTML += ` Orden número: ${pedidosStorageArray[i].id}<br>
+                                        Nombre: ${pedidosStorageArray[i].nombre}<br>
+                                        Cubiertos: ${pedidosStorageArray[i].cubiertos}<br>
+                                        Total: $${pedidosStorageArray[i].total}<br>
+                                        <hr>`
+    }
+}
+
 
 
 
@@ -255,3 +268,4 @@ borrarHistorial.onclick = () => {
     localStorage.clear()
     location.reload()
 }
+
