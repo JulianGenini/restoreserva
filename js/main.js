@@ -44,6 +44,37 @@ productos.push(new Producto(7, 'FLAN', 500, categorias[3]));
 productos.push(new Producto(8, 'HELADO', 500, categorias[3]));
 
 
+// Funciones para obtener datos del form
+
+function obtenerNombre() {
+    let obtenerN = document.getElementById('ingresoNombre').value;
+    return obtenerN;
+}
+
+function obtenerCubiertos() {
+    let obtenerC = document.getElementById('ingresoCubiertos').value;
+    return obtenerC;
+}
+
+// Toastify nombre
+
+function toastiNombre() {
+
+    let nombreToasti = document.getElementById('ingresoNombre').value;
+
+    Toastify({
+        text: `Bienvenidx ${nombreToasti}!`,
+        duration: 3000,
+        gravity: 'top',
+        position: 'right',
+        style: {
+
+            background: "linear-gradient(to right, #9b8b3e, #088200)",
+        },
+    }).showToast();
+
+}
+
 
 let nombreForm = document.getElementById('submitNombre');
 
@@ -157,7 +188,7 @@ let cubiertoForm = document.getElementById("submitCubiertos");
 
 cubiertoForm.onclick = () => {
     recogerDatos(),
-    mostarHistorialCubiertos()
+        mostarHistorialCubiertos()
 }
 
 // Mostrar/ocultar reporte
