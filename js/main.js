@@ -142,7 +142,6 @@ pedidoForm.onclick = () => {
         },
     }).showToast();
 
-    location.reload()
 }
 
 //     ****** Resumen del pedido ******
@@ -157,7 +156,6 @@ pedidoForm.onclick = () => {
 
 function recogerDatos() {
     let cubiertosCantidad = document.getElementById('ingresoCubiertos').value;
-    console.log(cubiertosCantidad);
 
     let cubArray = JSON.parse(localStorage.getItem("personasMesa")) || [];
     cubArray.push(cubiertosCantidad);
