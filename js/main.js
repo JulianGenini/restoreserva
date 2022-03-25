@@ -43,37 +43,6 @@ productos.push(new Producto(6, 'GASEOSA', 300, categorias[2]));
 productos.push(new Producto(7, 'FLAN', 500, categorias[3]));
 productos.push(new Producto(8, 'HELADO', 500, categorias[3]));
 
-// Funciones para obtener datos del form
-
-function obtenerNombre() {
-    let obtenerN = document.getElementById('ingresoNombre').value;
-    return obtenerN;
-}
-
-
-function obtenerCubiertos() {
-    let obtenerC = document.getElementById('ingresoCubiertos').value;
-    return obtenerC;
-}
-
-// Toastify nombre
-
-function toastiNombre() {
-
-    let nombreToasti = document.getElementById('ingresoNombre').value;
-
-    Toastify({
-        text: `Bienvenidx ${nombreToasti}!`,
-        duration: 3000,
-        gravity: 'top',
-        position: 'right',
-        style: {
-
-            background: "linear-gradient(to right, #9b8b3e, #088200)",
-        },
-    }).showToast();
-
-}
 
 
 let nombreForm = document.getElementById('submitNombre');
@@ -107,7 +76,7 @@ function crearPedido() {
 
     let pedidoStorageJSON = JSON.stringify(pedidoStorage);
 
-    localStorage.setItem('comandas', pedidoStorageJSON)
+    localStorage.setItem('comandas', pedidoStorageJSON) || [];
 
 
 
@@ -163,7 +132,7 @@ function recogerDatos() {
     cubArray.push(cubiertosCantidad);
     let cubArrayJSON = JSON.stringify(cubArray);
 
-    localStorage.setItem("personasMesa", cubArrayJSON)
+    localStorage.setItem("personasMesa", cubArrayJSON) || [];
 
 
     Toastify({
@@ -181,7 +150,6 @@ function recogerDatos() {
     reporteTitulo.innerHTML = `<h3>Usted ha reservado una mesa para ${cubiertosCantidad} persona/s</h3>`
 
 }
-
 
 // Botón que llama la función anterior
 
@@ -243,7 +211,8 @@ let conteoPedidosDiv = document.getElementById('conteoPedidos')
 
 console.log(pedidosStorageArray);
 
-if (pedidosStorageArray.length != null) {
+
+if (pedidosStorageArray) {
     for (let i = 0; i < pedidosStorageArray.length; i++) {
 
         // Acceder al objeto del arreglo en la posicion "i"
@@ -254,10 +223,6 @@ if (pedidosStorageArray.length != null) {
                                         <hr>`
     }
 }
-
-
-
-
 
 
 // Borrar todo
