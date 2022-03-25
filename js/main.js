@@ -204,6 +204,12 @@ evento.onclick = () => {
     mostrar()
 }
 
+let refresh = document.getElementById("refresh");
+
+refresh.onclick = () => {
+    location.reload()
+}
+
 // Fetch
 
 let url = 'http://api.weatherapi.com/v1/current.json?key=23fc3ba8bf934f2d8f8195549221103&q=Ushuaia&aqi=no';
